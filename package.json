@@ -2,17 +2,17 @@
   "name": "filter",
   "version": "1.0.0",
   "description": "A web form component that can gather parameters easily",
-  "main": "index.js",
+  "main": "lib/filter.es.js",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/feasier/filter.git"
   },
   "keywords": [
+    "react",
     "antd",
     "filter"
   ],
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/feasier/filter#readme",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/node": "^16.11.10",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
@@ -38,6 +39,7 @@
     "prettier": "^2.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rollup-plugin-visualizer": "^5.5.2",
     "typescript": "^4.5.2",
     "vite": "^2.6.14",
     "vite-plugin-eslint": "^1.3.0"
