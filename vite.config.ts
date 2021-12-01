@@ -14,7 +14,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'components/index.ts')
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'object-assign', 'antd']
+      external: ['react', 'react-dom', 'antd']
     }
   },
   server: {
