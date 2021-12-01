@@ -9,22 +9,18 @@
     ],
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "noImplicitThis": false,
-    "allowJs": false,
+    "noImplicitThis": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react"
   },
   "include": [
-    "./src",
+    "./components",
     "./playground"
   ]
 }
