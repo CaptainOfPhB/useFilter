@@ -29,9 +29,10 @@ export default defineConfig({
       open: true
     }),
     eslint({
+      cache: false,
       throwOnError: true,
       throwOnWarning: true,
-      include: ['src', 'playground']
+      include: ['components/**/*.ts', 'components/**/*.tsx', 'playground/**/*.ts', 'playground/**/*.tsx']
     })
   ]
 });
