@@ -18,6 +18,7 @@ export default defineConfig({
     }
   },
   server: {
+    hmr: false,
     open: '/playground/index.html'
   },
   plugins: [
