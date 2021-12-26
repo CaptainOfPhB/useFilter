@@ -5,6 +5,6 @@
     "declarationDir": "lib"
   },
   "include": [
-    "./components"
+    "./src"
   ]
 }

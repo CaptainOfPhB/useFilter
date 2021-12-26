@@ -18,13 +18,13 @@ export default defineConfig({
     }
   },
   server: {
-    hmr: false,
+    // hmr: false,
     open: '/playground/index.html'
   },
   plugins: [
     react(),
     typescript({
-      tsconfig: 'tsconfig.build.json'
+      tsconfig: 'tsconfig.json'
     }),
     visualizer({
       open: true
@@ -33,7 +33,7 @@ export default defineConfig({
       cache: false,
       throwOnError: true,
       throwOnWarning: true,
-      include: ['components/**/*.ts', 'components/**/*.tsx', 'playground/**/*.ts', 'playground/**/*.tsx']
+      include: ['src/**/*.ts', 'src/**/*.tsx', 'playground/**/*.ts', 'playground/**/*.tsx']
     })
   ]
 });
