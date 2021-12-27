@@ -7,7 +7,9 @@ module.exports = {
   },
   plugins: [
     'prettier',
+    'jest-dom',
     'react-hooks',
+    'testing-library',
     '@typescript-eslint'
   ],
   env: {
@@ -23,6 +25,13 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended'
   ],
+  overrides: {
+    files: ['**/?(*.)+(spec|test).[jt]s?(x)'],
+    extends: [
+      'plugin:jest-dom/recommended',
+      'plugin:testing-library/react',
+    ]
+  },
   settings: {
     react: {
       version: 'detect'
