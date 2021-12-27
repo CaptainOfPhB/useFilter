@@ -39,8 +39,11 @@ function Filter<FilterValues>(props: FilterProps<FilterValues>) {
     async (values: FilterValues) => {
       if (onSearch) {
         setLoading({ delay: 100 });
-        await onSearch(values);
-        setLoading(false);
+        try {
+          await onSearch(values);
+        } finally {
+          setLoading(false);
+        }
       }
     },
     [onSearch]
