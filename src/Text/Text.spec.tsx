@@ -1,9 +1,11 @@
 import '@testing-library/jest-dom';
 import { renderHook } from '@testing-library/react-hooks';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 
-import Text from './index';
+// import Text from './index';
 import useFilter from '../useFilter';
 
 test('should render to screen', () => {
+  const { result } = renderHook(() => useFilter());
+  const { Filter } = result;
 });
