@@ -24,7 +24,7 @@ function Text<Values>(props: TextProps<Values>) {
         onChange={props.onChange}
         disabled={props.disabled}
         placeholder={props.placeholder}
-        allowClear={props.allowClear || true}
+        allowClear={props.allowClear}
       />
     </Form.Item>
   );
