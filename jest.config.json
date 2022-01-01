@@ -1,0 +1,32 @@
+{
+  "verbose": true,
+  "roots": [
+    "src"
+  ],
+  "preset": "ts-jest",
+  "collectCoverage": true,
+  "testEnvironment": "jsdom",
+  "globals": {
+    "ts-jest": {
+      "tsconfig": "tsconfig.json"
+    }
+  },
+  "setupFilesAfterEnv": [
+    "<rootDir>/setupTests.ts"
+  ],
+  "modulePathIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/playground/"
+  ],
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/playground/"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|less)$": "identity-obj-proxy"
+  },
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/src/index.ts",
+    "<rootDir>/src/interface.ts"
+  ]
+}
