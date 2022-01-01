@@ -14,6 +14,7 @@ module.exports = {
   ],
   env: {
     es6: true,
+    node: true,
     browser: true
   },
   extends: [
@@ -25,13 +26,15 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended'
   ],
-  overrides: {
-    files: ['**/?(*.)+(spec|test).[jt]s?(x)'],
-    extends: [
-      'plugin:jest-dom/recommended',
-      'plugin:testing-library/react',
-    ]
-  },
+  overrides: [
+    {
+      files: ['**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: [
+        'plugin:jest-dom/recommended',
+        'plugin:testing-library/react'
+      ]
+    }
+  ],
   settings: {
     react: {
       version: 'detect'
