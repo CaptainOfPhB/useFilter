@@ -6,11 +6,11 @@ on:
 
 jobs:
 
-  install:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 15 ]
+        node-version: [ latest ]
     steps:
       - uses: actions/checkout@v2
 
@@ -26,13 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-  test:
-    needs:
-      - install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
 
       - name: Run tests
         run: pnpm test
