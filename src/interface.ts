@@ -1,4 +1,5 @@
 import { FormItemProps, InputProps } from 'antd';
+import { FormInstance } from 'antd/lib/form/Form';
 
 type FieldBaseKeys = 'rules' | 'name' | 'initialValue' | 'required' | 'extra' | 'label' | 'tooltip' | 'normalize';
 
@@ -7,6 +8,7 @@ type FieldBaseKeys = 'rules' | 'name' | 'initialValue' | 'required' | 'extra' | 
  */
 export type BaseProps<V = unknown> = Pick<FormItemProps<V>, FieldBaseKeys> & {
   span?: number;
+  form?: FormInstance<V>;
   fieldProps?: Exclude<FormItemProps<V>, FieldBaseKeys>;
 };
 

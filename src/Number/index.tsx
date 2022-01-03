@@ -5,10 +5,15 @@ import { BaseProps, TextBaseProps } from '../interface';
 export interface NumericProps<V> extends TextBaseProps, BaseProps<V> {}
 
 function Numeric<V>(props: NumericProps<V>) {
-  const { fieldProps, textProps } = props;
+  const { form, fieldProps, textProps } = props;
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log(2, Number(e.target.value));
+    const value = e.target.value;
+    if (!value.trim()) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      form!.setFieldsValue({ [props.name]: undefined });
+    }
   }
 
   return (
