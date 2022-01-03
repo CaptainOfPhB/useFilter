@@ -11,14 +11,15 @@ export default defineConfig({
     polyfillModulePreload: false,
     lib: {
       formats: ['es'],
-      entry: resolve(__dirname, 'components/index.ts')
+      entry: resolve(__dirname, 'src/index.ts')
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'antd']
     }
   },
   server: {
-    open: '/playground/index.html'
+    hmr: false,
+    open: 'playground/index.html'
   },
   plugins: [
     react(),
