@@ -10,7 +10,7 @@ A [React][react] hooks that can gather form values easily, based on [antd 4.0][a
 
 [antd]: https://ant.design 'ant design'
 
-[coverage-statement]: ./coverage/badge-statements.svg
+[coverage-statement]: ./badges/badge-statements.svg
 
 ## Usage
 

@@ -8,7 +8,7 @@
     "build": "vite build",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:badges": "pnpm test && jest-coverage-badges",
+    "test:badges": "pnpm test && jest-coverage-badges output badges",
     "coverage": "serve coverage/lcov-report"
   },
   "repository": {
