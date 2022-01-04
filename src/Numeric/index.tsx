@@ -1,24 +1,18 @@
 import React from 'react';
-import { Form, Input } from 'antd';
-import { BaseProps, TextBaseProps } from '../interface';
+import { FieldProps, PruneProps } from '../useFilter';
+import { Form, InputNumber, InputNumberProps } from 'antd';
 
-export interface NumericProps<V> extends TextBaseProps, BaseProps<V> {}
+type NumericKeys = 'disabled' | 'placeholder' | 'onChange' | 'precision' | 'max' | 'min';
 
-function Numeric<V>(props: NumericProps<V>) {
-  const { form, fieldProps, textProps } = props;
+export type NumericProps = PruneProps<InputNumberProps, NumericKeys, 'numericExtraProps'>;
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value;
-    if (!value.trim()) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      form!.setFieldsValue({ [props.name]: undefined });
-    }
-  }
+function Numeric<V>(props: NumericProps & FieldProps<V>) {
+  const { fieldExtraProps, numericExtraProps } = props;
+  const controls = !!props.numericExtraProps?.controls;
 
   return (
     <Form.Item
-      {...fieldProps}
+      {...fieldExtraProps}
       name={props.name}
       rules={props.rules}
       label={props.label}
@@ -28,12 +22,16 @@ function Numeric<V>(props: NumericProps<V>) {
       normalize={props.normalize}
       initialValue={props.initialValue}
     >
-      <Input
-        {...textProps}
-        onChange={onChange}
+      <InputNumber
+        {...numericExtraProps}
+        min={props.min}
+        max={props.max}
+        controls={controls}
+        style={{ width: '100%' }}
+        onChange={props.onChange}
         disabled={props.disabled}
+        precision={props.precision}
         placeholder={props.placeholder}
-        allowClear={props.allowClear}
       />
     </Form.Item>
   );

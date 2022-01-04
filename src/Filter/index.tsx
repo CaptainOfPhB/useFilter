@@ -1,10 +1,10 @@
+import React, { useCallback } from 'react';
 import { RowProps } from 'antd/lib/grid/row';
-import React, { useCallback, cloneElement } from 'react';
 import { FormInstance, FormProps } from 'antd/lib/form/Form';
 import { Button, Col, ColProps, Form, Row, Space } from 'antd';
 import { ReactElement, Children, useState, useMemo } from 'react';
 
-export type ChildType = ReactElement<{ span?: number; form?: FormInstance }>;
+export type ChildType = ReactElement<{ span?: number }>;
 
 export interface FilterProps<FilterValues = unknown> {
   defaultSpan?: number;
@@ -31,9 +31,9 @@ function Filter<FilterValues>(props: FilterProps<FilterValues>) {
     }
     return Children.map(props.children, function (child: ChildType) {
       const span = child.props.span || defaultSpan;
-      return <Col span={span}>{cloneElement(child, { form })}</Col>;
+      return <Col span={span}>{child}</Col>;
     });
-  }, [form, props.children, defaultSpan]);
+  }, [props.children, defaultSpan]);
 
   const onFinish = useCallback(
     async (values: FilterValues) => {
