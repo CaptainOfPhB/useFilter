@@ -1,17 +1,17 @@
 import React from 'react';
 import { Form, Input, InputProps } from 'antd';
-import { FieldProps, PruneProps } from '../useFilter';
+import { FieldProps, PruneProps } from '../index';
 
 type TextKeys = 'disabled' | 'placeholder' | 'onChange' | 'allowClear';
 
-export type TextProps = PruneProps<InputProps, TextKeys, 'textExtraProps'>;
+export type TextProps = PruneProps<InputProps, TextKeys, 'extra'>;
 
 function Text<Values>(props: TextProps & FieldProps<Values>) {
-  const { textExtraProps, fieldExtraProps } = props;
+  const { extra, field } = props;
 
   return (
     <Form.Item
-      {...fieldExtraProps}
+      {...field}
       name={props.name}
       rules={props.rules}
       label={props.label}
@@ -22,11 +22,11 @@ function Text<Values>(props: TextProps & FieldProps<Values>) {
       initialValue={props.initialValue}
     >
       <Input
-        {...textExtraProps}
+        {...extra}
         onChange={props.onChange}
         disabled={props.disabled}
-        placeholder={props.placeholder}
         allowClear={props.allowClear}
+        placeholder={props.placeholder}
       />
     </Form.Item>
   );

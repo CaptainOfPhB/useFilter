@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormItemProps } from 'antd';
+import { Form } from 'antd';
 import Filter, { FilterProps } from './Filter';
 import { FormInstance } from 'antd/lib/form/Form';
 
@@ -32,11 +32,3 @@ function useFilter<FilterValues>(): Return<FilterValues> {
 }
 
 export default useFilter;
-
-type FieldKeys = 'rules' | 'name' | 'initialValue' | 'required' | 'extra' | 'label' | 'tooltip' | 'normalize';
-
-export type FieldProps<V = unknown> = PruneProps<FormItemProps<V>, FieldKeys, 'fieldExtraProps'> & {
-  span?: number;
-};
-
-export type PruneProps<T, K extends keyof T, E extends string> = { [X in K]: T[X] } & { [Y in E]?: Omit<T, K> };
