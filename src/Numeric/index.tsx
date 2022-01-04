@@ -4,15 +4,15 @@ import { Form, InputNumber, InputNumberProps } from 'antd';
 
 type NumericKeys = 'disabled' | 'placeholder' | 'onChange' | 'precision' | 'max' | 'min';
 
-export type NumericProps = PruneProps<InputNumberProps, NumericKeys, 'extra'>;
+export type NumericProps = PruneProps<InputNumberProps, NumericKeys, 'extras'>;
 
 function Numeric<V>(props: NumericProps & FieldProps<V>) {
-  const { field, extra } = props;
-  const controls = !!props.extra?.controls;
+  const { fields, extras } = props;
+  const controls = !!extras?.controls;
 
   return (
     <Form.Item
-      {...field}
+      {...fields}
       name={props.name}
       rules={props.rules}
       label={props.label}
@@ -23,7 +23,7 @@ function Numeric<V>(props: NumericProps & FieldProps<V>) {
       initialValue={props.initialValue}
     >
       <InputNumber
-        {...extra}
+        {...extras}
         min={props.min}
         max={props.max}
         controls={controls}

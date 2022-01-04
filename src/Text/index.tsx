@@ -4,14 +4,14 @@ import { FieldProps, PruneProps } from '../index';
 
 type TextKeys = 'disabled' | 'placeholder' | 'onChange' | 'allowClear';
 
-export type TextProps = PruneProps<InputProps, TextKeys, 'extra'>;
+export type TextProps = PruneProps<InputProps, TextKeys, 'extras'>;
 
 function Text<Values>(props: TextProps & FieldProps<Values>) {
-  const { extra, field } = props;
+  const { extras, fields } = props;
 
   return (
     <Form.Item
-      {...field}
+      {...fields}
       name={props.name}
       rules={props.rules}
       label={props.label}
@@ -22,7 +22,7 @@ function Text<Values>(props: TextProps & FieldProps<Values>) {
       initialValue={props.initialValue}
     >
       <Input
-        {...extra}
+        {...extras}
         onChange={props.onChange}
         disabled={props.disabled}
         allowClear={props.allowClear}

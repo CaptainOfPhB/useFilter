@@ -8,7 +8,7 @@ export default useFilter;
 
 type FieldKeys = 'rules' | 'name' | 'initialValue' | 'required' | 'extra' | 'label' | 'tooltip' | 'normalize';
 
-export type FieldProps<V = unknown> = PruneProps<FormItemProps<V>, FieldKeys, 'field'> & {
+export type FieldProps<V = unknown> = PruneProps<FormItemProps<V>, FieldKeys, 'fields'> & {
   span?: number;
 };
 
