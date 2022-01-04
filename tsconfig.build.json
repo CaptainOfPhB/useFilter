@@ -5,6 +5,12 @@
     "declarationDir": "lib"
   },
   "include": [
-    "./src"
+    "src"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.tsx",
+    "**/*.spec.tsx"
   ]
 }
