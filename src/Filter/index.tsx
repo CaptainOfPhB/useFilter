@@ -33,7 +33,7 @@ function Filter<FilterValues>(props: FilterProps<FilterValues>) {
       const span = child.props.span || defaultSpan;
       return <Col span={span}>{cloneElement(child, { form })}</Col>;
     });
-  }, [props.children, defaultSpan]);
+  }, [form, props.children, defaultSpan]);
 
   const onFinish = useCallback(
     async (values: FilterValues) => {
