@@ -1,8 +1,16 @@
 # useFilter
 
-![staging tests][badge]
+![staging-test-statement][staging-test-statement] ![coverage-statement][coverage-statement]
 
 A [React][react] hooks that can gather form values easily, based on [antd 4.0][antd].
+
+[staging-test-statement]: https://github.com/feasier/useFilter/actions/workflows/main.yml/badge.svg?branch=staging 'badge link'
+
+[react]: https://reactjs.org 'react'
+
+[antd]: https://ant.design 'ant design'
+
+[coverage-statement]: ./coverage/badge-statements.svg
 
 ## Usage
 
@@ -33,9 +41,3 @@ function Demo() {
   )
 }
 ```
-
-[badge]: https://github.com/feasier/useFilter/actions/workflows/main.yml/badge.svg?branch=staging 'badge link'
-
-[react]: https://reactjs.org 'react'
-
-[antd]: https://ant.design 'ant design'
