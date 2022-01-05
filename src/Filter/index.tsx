@@ -6,20 +6,20 @@ import { ReactElement, Children, useState, useMemo } from 'react';
 
 export type ChildType = ReactElement<{ span?: number }>;
 
-export interface FilterProps<FilterValues = unknown> {
+export interface FilterProps<FieldsValue = unknown> {
   defaultSpan?: number;
   actionProps?: ColProps;
   gap?: RowProps['gutter'];
   resetText?: React.ReactNode;
   searchText?: React.ReactNode;
   customAction?: React.ReactNode;
-  form: FormInstance<FilterValues>;
+  form: FormInstance<FieldsValue>;
   children: ChildType | ChildType[];
-  filterProps?: Omit<FormProps<FilterValues>, 'form'>;
-  onSearch?: (filterValues: FilterValues) => Promise<unknown> | void;
+  filterProps?: Omit<FormProps<FieldsValue>, 'form'>;
+  onSearch?: (filterValues: FieldsValue) => Promise<unknown> | void;
 }
 
-function Filter<FilterValues>(props: FilterProps<FilterValues>) {
+function Filter<FieldsValue>(props: FilterProps<FieldsValue>) {
   const defaultSpan = props.defaultSpan || 4;
   const [loading, setLoading] = useState<boolean | { delay?: number }>(false);
   const { form, onSearch, filterProps, actionProps, customAction, searchText, resetText } = props;
@@ -36,7 +36,7 @@ function Filter<FilterValues>(props: FilterProps<FilterValues>) {
   }, [props.children, defaultSpan]);
 
   const onFinish = useCallback(
-    async (values: FilterValues) => {
+    async (values: FieldsValue) => {
       if (onSearch) {
         setLoading({ delay: 100 });
         try {

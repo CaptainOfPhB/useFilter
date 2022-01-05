@@ -12,10 +12,10 @@ export type Return<V> = {
   setValues: FormInstance<V>['setFieldsValue'];
 };
 
-function useFilter<FilterValues>(): Return<FilterValues> {
+function useFilter<FieldsValue>(): Return<FieldsValue> {
   const [form] = Form.useForm();
   return {
-    Filter: (props: React.PropsWithChildren<Omit<FilterProps<FilterValues>, 'form'>>) => {
+    Filter: (props: React.PropsWithChildren<Omit<FilterProps<FieldsValue>, 'form'>>) => {
       const { children, ...rest } = props;
       return (
         <Filter form={form} {...rest}>

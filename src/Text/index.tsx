@@ -6,7 +6,7 @@ type TextKeys = 'disabled' | 'placeholder' | 'onChange' | 'allowClear';
 
 export type TextProps = PruneProps<InputProps, TextKeys, 'extras'>;
 
-function Text<Values>(props: TextProps & FieldProps<Values>) {
+function Text<FieldsValue>(props: TextProps & FieldProps<FieldsValue>) {
   const { extras, fields } = props;
 
   return (

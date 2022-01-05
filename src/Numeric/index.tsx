@@ -6,7 +6,7 @@ type NumericKeys = 'disabled' | 'placeholder' | 'onChange' | 'precision' | 'max'
 
 export type NumericProps = PruneProps<InputNumberProps, NumericKeys, 'extras'>;
 
-function Numeric<V>(props: NumericProps & FieldProps<V>) {
+function Numeric<FieldsValue>(props: NumericProps & FieldProps<FieldsValue>) {
   const { fields, extras } = props;
   const controls = !!extras?.controls;
 
