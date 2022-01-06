@@ -40,10 +40,20 @@ function Selector<Value extends SelectValue, FieldsValue = unknown>(
     >
       <Select<Value>
         {...extras}
+        options={props.options}
+        loading={props.loading}
+        onSearch={props.onSearch}
         onChange={props.onChange}
         disabled={props.disabled}
+        fieldNames={props.fieldNames}
+        showSearch={props.showSearch}
         allowClear={props.allowClear}
         placeholder={props.placeholder}
+        filterOption={props.filterOption}
+        labelInValue={props.labelInValue}
+        optionLabelProp={props.optionLabelProp}
+        optionFilterProp={props.optionFilterProp}
+        notFoundContent={props.notFoundContent || null}
       />
     </Form.Item>
   );

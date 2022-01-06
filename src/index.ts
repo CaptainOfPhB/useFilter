@@ -2,6 +2,7 @@ import { FormItemProps } from 'antd';
 
 export { default as Text } from './Text';
 export { default as Numeric } from './Numeric';
+export { default as Selector } from './Selector';
 
 import useFilter from './useFilter';
 export default useFilter;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
-import useFilter, { Text, Numeric } from '../src';
+import useFilter, { Text, Numeric, Selector } from '../src';
 
 interface Values {
   foo: string;
@@ -35,6 +35,14 @@ function App() {
             initialValue={123}
             tooltip='number demo tooltip'
             rules={[{ required: true, message: 'bar is required' }]}
+          />
+          <Selector
+            name='user'
+            label='Selector demo'
+            options={[
+              { label: 123, value: 123 },
+              { label: 'aaa', value: 'aaa' }
+            ]}
           />
         </Filter>
       </Card>
