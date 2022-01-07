@@ -52,8 +52,8 @@ function Selector<Value extends SelectValue, FieldsValue = unknown>(
         filterOption={props.filterOption}
         labelInValue={props.labelInValue}
         optionLabelProp={props.optionLabelProp}
+        notFoundContent={props.notFoundContent}
         optionFilterProp={props.optionFilterProp}
-        notFoundContent={props.notFoundContent || null}
       />
     </Form.Item>
   );
