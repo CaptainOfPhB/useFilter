@@ -1,7 +1,7 @@
 import React from 'react';
-import { SelectValue } from 'antd/lib/select';
 import { Form, Select, SelectProps } from 'antd';
 import { FieldProps, PruneProps } from '../index';
+import { BaseOptionType, SelectValue, DefaultOptionType } from 'antd/lib/select';
 
 type SelectorKeys =
   | 'loading'
@@ -19,11 +19,13 @@ type SelectorKeys =
   | 'filterOption'
   | 'labelInValue';
 
-export type SelectorProps<V> = PruneProps<SelectProps<V>, SelectorKeys, 'extras'>;
+export type SelectorProps<V, O> = PruneProps<SelectProps<V, O>, SelectorKeys, 'extras'>;
 
-function Selector<Value extends SelectValue, FieldsValue = unknown>(
-  props: SelectorProps<Value> & FieldProps<FieldsValue>
-) {
+function Selector<
+  Value extends SelectValue,
+  FieldsValue = unknown,
+  OptionType extends BaseOptionType = DefaultOptionType
+>(props: SelectorProps<Value, OptionType> & FieldProps<FieldsValue>) {
   const { extras, fields } = props;
 
   return (
@@ -38,7 +40,7 @@ function Selector<Value extends SelectValue, FieldsValue = unknown>(
       normalize={props.normalize}
       initialValue={props.initialValue}
     >
-      <Select<Value>
+      <Select<Value, OptionType>
         {...extras}
         options={props.options}
         loading={props.loading}
