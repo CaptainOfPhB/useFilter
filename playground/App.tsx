@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from 'antd';
-import useFilter, { Text, Numeric, Selector } from '../src';
+import { Card, Input } from 'antd';
+import useFilter, { Text, Numeric, Selector, Field } from '../src';
 
 interface Values {
   foo: string;
@@ -8,7 +8,7 @@ interface Values {
 }
 
 function App() {
-  const { Filter } = useFilter<Values>();
+  const { Filter, getValue } = useFilter<Values>();
 
   const onSearch = (values: Values) =>
     new Promise<boolean>(resolve =>
@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <Card title={Text.name}>
-        <Filter onSearch={onSearch}>
+        <Filter onSubmit={onSearch}>
           <Text
             name='foo'
             label='Text demo'
@@ -39,11 +39,29 @@ function App() {
           <Selector
             name='user'
             label='Selector demo'
+            placeholder='please select an user'
             options={[
               { label: 123, value: 123 },
               { label: 'aaa', value: 'aaa' }
             ]}
           />
+          <Field span={6} fieldProps={{ dependencies: ['user'] }}>
+            {() => {
+              return (
+                <Field
+                  name='input'
+                  initialValue='aaa'
+                  label='custom input'
+                  rules={[
+                    { required: true, message: 'please input a name' },
+                    { pattern: /^[a-zA-Z]+$/g, message: 'please input letter' }
+                  ]}
+                >
+                  <Input placeholder='11111111' disabled={!getValue('user')} />
+                </Field>
+              );
+            }}
+          </Field>
         </Filter>
       </Card>
     </div>

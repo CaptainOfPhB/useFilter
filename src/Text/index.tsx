@@ -1,34 +1,23 @@
 import React from 'react';
-import { Form, Input, InputProps } from 'antd';
-import { FieldProps, PruneProps } from '../index';
+import { Prune } from '../index';
+import { Input, InputProps } from 'antd';
+import Field, { FieldProps } from '../Field';
 
 type TextKeys = 'disabled' | 'placeholder' | 'onChange' | 'allowClear';
 
-export type TextProps = PruneProps<InputProps, TextKeys, 'extras'>;
+export type TextProps = Prune<InputProps, TextKeys, 'extras'>;
 
-function Text<FieldsValue>(props: TextProps & FieldProps<FieldsValue>) {
-  const { extras, fields } = props;
-
+function Text(props: TextProps & FieldProps) {
   return (
-    <Form.Item
-      {...fields}
-      name={props.name}
-      rules={props.rules}
-      label={props.label}
-      extra={props.extra}
-      tooltip={props.tooltip}
-      required={props.required}
-      normalize={props.normalize}
-      initialValue={props.initialValue}
-    >
+    <Field {...props}>
       <Input
-        {...extras}
+        {...props.extras}
         onChange={props.onChange}
         disabled={props.disabled}
         allowClear={props.allowClear}
         placeholder={props.placeholder}
       />
-    </Form.Item>
+    </Field>
   );
 }
 

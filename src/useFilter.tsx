@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form } from 'antd';
-import Filter, { FilterProps } from './Filter';
+import Root, { RootProps } from './Root';
 import { FormInstance } from 'antd/lib/form/Form';
 
 export type Return<V> = {
-  Filter: (props: React.PropsWithChildren<Omit<FilterProps<V>, 'form'>>) => JSX.Element;
+  Filter: (props: React.PropsWithChildren<Omit<RootProps<V>, 'form'>>) => JSX.Element;
   reset: FormInstance<V>['resetFields'];
   validate: FormInstance<V>['validateFields'];
   getValue: FormInstance<V>['getFieldValue'];
@@ -15,12 +15,12 @@ export type Return<V> = {
 function useFilter<FieldsValue>(): Return<FieldsValue> {
   const [form] = Form.useForm();
   return {
-    Filter: (props: React.PropsWithChildren<Omit<FilterProps<FieldsValue>, 'form'>>) => {
+    Filter: (props: React.PropsWithChildren<Omit<RootProps<FieldsValue>, 'form'>>) => {
       const { children, ...rest } = props;
       return (
-        <Filter form={form} {...rest}>
+        <Root form={form} {...rest}>
           {children}
-        </Filter>
+        </Root>
       );
     },
     reset: form.resetFields,

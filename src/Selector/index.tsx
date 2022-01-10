@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Select, SelectProps } from 'antd';
-import { FieldProps, PruneProps } from '../index';
-import { BaseOptionType, SelectValue, DefaultOptionType } from 'antd/lib/select';
+import { Prune } from '../index';
+import { Select, SelectProps } from 'antd';
+import Field, { FieldProps } from '../Field';
 
 type SelectorKeys =
   | 'loading'
@@ -19,29 +19,13 @@ type SelectorKeys =
   | 'filterOption'
   | 'labelInValue';
 
-export type SelectorProps<V, O> = PruneProps<SelectProps<V, O>, SelectorKeys, 'extras'>;
+export type SelectorProps<V, O> = Prune<SelectProps<V, O>, SelectorKeys, 'selectorProps'>;
 
-function Selector<
-  Value extends SelectValue,
-  FieldsValue = unknown,
-  OptionType extends BaseOptionType = DefaultOptionType
->(props: SelectorProps<Value, OptionType> & FieldProps<FieldsValue>) {
-  const { extras, fields } = props;
-
+function Selector<Value, OptionType>(props: SelectorProps<Value, OptionType> & FieldProps) {
   return (
-    <Form.Item
-      {...fields}
-      name={props.name}
-      rules={props.rules}
-      label={props.label}
-      extra={props.extra}
-      tooltip={props.tooltip}
-      required={props.required}
-      normalize={props.normalize}
-      initialValue={props.initialValue}
-    >
+    <Field {...props}>
       <Select<Value, OptionType>
-        {...extras}
+        {...props.selectorProps}
         options={props.options}
         loading={props.loading}
         onSearch={props.onSearch}
@@ -57,7 +41,7 @@ function Selector<
         notFoundContent={props.notFoundContent}
         optionFilterProp={props.optionFilterProp}
       />
-    </Form.Item>
+    </Field>
   );
 }
 

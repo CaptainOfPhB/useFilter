@@ -6,29 +6,25 @@ import { ReactElement, Children, useState, useMemo } from 'react';
 
 export type ChildType = ReactElement<{ span?: number }>;
 
-export interface FilterProps<FieldsValue = unknown> {
+export interface RootProps<V> {
   defaultSpan?: number;
   actionProps?: ColProps;
   gap?: RowProps['gutter'];
   resetText?: React.ReactNode;
   searchText?: React.ReactNode;
   customAction?: React.ReactNode;
-  form: FormInstance<FieldsValue>;
+  form: FormInstance<V>;
   children: ChildType | ChildType[];
-  filterProps?: Omit<FormProps<FieldsValue>, 'form'>;
-  onSearch?: (filterValues: FieldsValue) => Promise<unknown> | void;
+  filterProps?: Omit<FormProps<V>, 'form'>;
+  onSubmit?: (fieldsValue: V) => Promise<unknown> | void;
 }
 
-function Filter<FieldsValue>(props: FilterProps<FieldsValue>) {
+function Root<V>(props: RootProps<V>) {
   const defaultSpan = props.defaultSpan || 4;
   const [loading, setLoading] = useState<boolean | { delay?: number }>(false);
-  const { form, onSearch, filterProps, actionProps, customAction, searchText, resetText } = props;
+  const { form, onSubmit, filterProps, actionProps, customAction, searchText, resetText } = props;
 
   const ColWrappedChildren = useMemo(() => {
-    const childrenCount = Children.count(props.children);
-    if (!childrenCount) {
-      throw Error('Wrong usage of <Filter>, you should pass at least one child.');
-    }
     return Children.map(props.children, function (child: ChildType) {
       const span = child.props.span || defaultSpan;
       return <Col span={span}>{child}</Col>;
@@ -36,17 +32,17 @@ function Filter<FieldsValue>(props: FilterProps<FieldsValue>) {
   }, [props.children, defaultSpan]);
 
   const onFinish = useCallback(
-    async (values: FieldsValue) => {
-      if (onSearch) {
+    async (values: V) => {
+      if (onSubmit) {
         setLoading({ delay: 100 });
         try {
-          await onSearch(values);
+          await onSubmit(values);
         } finally {
           setLoading(false);
         }
       }
     },
-    [onSearch]
+    [onSubmit]
   );
 
   return (
@@ -72,4 +68,4 @@ function Filter<FieldsValue>(props: FilterProps<FieldsValue>) {
   );
 }
 
-export default Filter;
+export default Root;
