@@ -6,9 +6,10 @@ export interface ShellProps<V> extends FormItemProps<V> {
 }
 
 function Shell<V>(props: ShellProps<V>) {
+  const { span, ...rest } = props;
   return (
-    <Col span={props.span}>
-      <Form.Item {...props}>{props.children}</Form.Item>
+    <Col span={span}>
+      <Form.Item {...rest} />
     </Col>
   );
 }
