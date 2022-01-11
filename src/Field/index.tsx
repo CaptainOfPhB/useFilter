@@ -4,7 +4,7 @@ import { Prune } from '../index';
 
 type FieldKeys = 'rules' | 'name' | 'initialValue' | 'required' | 'extra' | 'label' | 'tooltip' | 'normalize';
 
-export type FieldProps = Prune<FormItemProps, FieldKeys, 'fieldProps'> & {
+export type FieldProps = Prune<FormItemProps, FieldKeys, 'fields'> & {
   span?: number;
   children?: FormItemProps['children'];
 };
@@ -17,7 +17,7 @@ export type FieldProps = Prune<FormItemProps, FieldKeys, 'fieldProps'> & {
 function Field(props: FieldProps) {
   return (
     <Form.Item
-      {...props.fieldProps}
+      {...props.fields}
       name={props.name}
       rules={props.rules}
       label={props.label}

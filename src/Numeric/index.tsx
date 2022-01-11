@@ -5,16 +5,16 @@ import { InputNumber, InputNumberProps } from 'antd';
 
 type NumericKeys = 'disabled' | 'placeholder' | 'onChange' | 'precision' | 'max' | 'min';
 
-export type NumericProps = Prune<InputNumberProps, NumericKeys, 'numericProps'>;
+export type NumericProps = Prune<InputNumberProps, NumericKeys, 'rest'>;
 
 function Numeric(props: NumericProps & FieldProps) {
-  const { numericProps } = props;
-  const controls = !!numericProps?.controls;
+  const { rest } = props;
+  const controls = !!rest?.controls;
 
   return (
     <Field {...props}>
       <InputNumber
-        {...numericProps}
+        {...rest}
         min={props.min}
         max={props.max}
         controls={controls}

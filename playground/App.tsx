@@ -27,6 +27,8 @@ function App() {
             label='Text demo'
             initialValue='abc'
             tooltip='text demo tooltip'
+            rest={{ addonAfter: '1' }}
+            fields={{ dependencies: ['user'] }}
             rules={[{ required: true, message: 'foo is required' }]}
           />
           <Numeric
@@ -45,7 +47,7 @@ function App() {
               { label: 'aaa', value: 'aaa' }
             ]}
           />
-          <Field span={6} fieldProps={{ dependencies: ['user'] }}>
+          <Field span={6} fields={{ dependencies: ['user'] }}>
             {() => {
               return (
                 <Field

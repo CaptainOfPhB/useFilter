@@ -19,13 +19,13 @@ type SelectorKeys =
   | 'filterOption'
   | 'labelInValue';
 
-export type SelectorProps<V, O> = Prune<SelectProps<V, O>, SelectorKeys, 'selectorProps'>;
+export type SelectorProps<V, O> = Prune<SelectProps<V, O>, SelectorKeys, 'rest'>;
 
 function Selector<Value, OptionType>(props: SelectorProps<Value, OptionType> & FieldProps) {
   return (
     <Field {...props}>
       <Select<Value, OptionType>
-        {...props.selectorProps}
+        {...props.rest}
         options={props.options}
         loading={props.loading}
         onSearch={props.onSearch}

@@ -5,13 +5,13 @@ import Field, { FieldProps } from '../Field';
 
 type TextKeys = 'disabled' | 'placeholder' | 'onChange' | 'allowClear';
 
-export type TextProps = Prune<InputProps, TextKeys, 'extras'>;
+export type TextProps = Prune<InputProps, TextKeys, 'rest'>;
 
 function Text(props: TextProps & FieldProps) {
   return (
     <Field {...props}>
       <Input
-        {...props.extras}
+        {...props.rest}
         onChange={props.onChange}
         disabled={props.disabled}
         allowClear={props.allowClear}
