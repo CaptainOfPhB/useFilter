@@ -13,7 +13,7 @@ test('should render to screen', () => {
 
   render(
     <Filter>
-      <Numeric label={label} extras={{ controls: true }} />
+      <Numeric label={label} rest={{ controls: true }} />
     </Filter>
   );
 
