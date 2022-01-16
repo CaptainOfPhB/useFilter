@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Input } from 'antd';
-import useFilter, { Text, Numeric, Selector, Field } from '../src';
+import { Card, Input, Form } from 'antd';
+import useFilter, { Text, Numeric, Selector } from '../src';
 
 interface Values {
   foo: string;
@@ -21,23 +21,14 @@ function App() {
   return (
     <div>
       <Card title={Text.name}>
-        <Filter onSubmit={onSearch}>
-          <Text
-            name='foo'
-            label='Text demo'
-            initialValue='abc'
-            tooltip='text demo tooltip'
-            rest={{ addonAfter: '1' }}
-            fields={{ dependencies: ['user'] }}
-            rules={[{ required: true, message: 'foo is required' }]}
-          />
-          <Numeric
-            name='bar'
-            label='Number demo'
-            initialValue={123}
-            tooltip='number demo tooltip'
-            rules={[{ required: true, message: 'bar is required' }]}
-          />
+        <Filter size='large' onSubmit={onSearch}>
+          <Text name='foo' label='Text demo' placeholder='please input a string' />
+          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
+          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
+          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
+          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
+          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
+          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
           <Selector
             name='user'
             label='Selector demo'
@@ -47,23 +38,13 @@ function App() {
               { label: 'aaa', value: 'aaa' }
             ]}
           />
-          <Field span={6} fields={{ dependencies: ['user'] }}>
-            {() => {
-              return (
-                <Field
-                  name='input'
-                  initialValue='aaa'
-                  label='custom input'
-                  rules={[
-                    { required: true, message: 'please input a name' },
-                    { pattern: /^[a-zA-Z]+$/g, message: 'please input letter' }
-                  ]}
-                >
-                  <Input placeholder='11111111' disabled={!getValue('user')} />
-                </Field>
-              );
-            }}
-          </Field>
+          <Form.Item dependencies={['user']}>
+            {() => (
+              <Form.Item name='input' label='custom input'>
+                <Input placeholder='please input' disabled={!getValue('user')} />
+              </Form.Item>
+            )}
+          </Form.Item>
         </Filter>
       </Card>
     </div>
