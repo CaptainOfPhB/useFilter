@@ -64,7 +64,7 @@ function Root<V>(props: PropsWithChildren<RootProps<V>>) {
       <Row gutter={gutter}>
         {memoizedChildren}
         <Col offset={memoizedOffset} span={span} style={{ textAlign: 'right' }}>
-          <Form.Item label=' '>
+          <Form.Item label=' ' colon={false}>
             <Space>
               <Button type='primary' htmlType='submit' loading={loading}>
                 {submitText || '搜索'}
