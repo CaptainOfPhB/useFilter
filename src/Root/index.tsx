@@ -35,7 +35,7 @@ function Root<V>(props: PropsWithChildren<RootProps<V>>) {
   const columns = props.size ? Column[props.size] : Column.default;
   const [loading, setLoading] = useState<boolean | { delay?: number }>(false);
   const [expanded, setExpanded] = useState<boolean>(props.defaultExpanded || false);
-  const { form, onSubmit, children, rest, submitText: searchText, resetText } = props;
+  const { form, onSubmit, children, rest, submitText, resetText } = props;
 
   const onFinish = useCallback(
     async (values: V) => {
@@ -67,7 +67,7 @@ function Root<V>(props: PropsWithChildren<RootProps<V>>) {
           <Form.Item label=' '>
             <Space>
               <Button type='primary' htmlType='submit' loading={loading}>
-                {searchText || '搜索'}
+                {submitText || '搜索'}
               </Button>
               <Button htmlType='reset'>{resetText || '重置'}</Button>
               <Button type='link' onClick={() => setExpanded(!expanded)}>
