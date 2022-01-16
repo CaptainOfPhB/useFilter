@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@ant-design/icons': ^4.7.0
   '@rollup/plugin-typescript': ^8.3.0
   '@testing-library/jest-dom': ^5.16.1
   '@testing-library/react': ^12.1.2
@@ -33,6 +34,7 @@ specifiers:
   vite-plugin-eslint: ^1.3.0
 
 devDependencies:
+  '@ant-design/icons': 4.7.0_react-dom@17.0.2+react@17.0.2
   '@rollup/plugin-typescript': 8.3.0_0d8ca1b6b1b52a59794a97cfe4dc6150
   '@testing-library/jest-dom': 5.16.1
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
