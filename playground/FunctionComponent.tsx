@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Input, Form } from 'antd';
-import useFilter, { Text, Numeric, Selector } from '../components';
+import F, { Text, Numeric, Selector } from '../components';
 
 interface Values {
   foo: string;
@@ -8,7 +8,7 @@ interface Values {
 }
 
 function App() {
-  const { Filter, getValue } = useFilter<Values>();
+  const { Filter, getValue } = F.useFilter<Values>();
 
   const onSearch = (values: Values) =>
     new Promise<boolean>(resolve =>
