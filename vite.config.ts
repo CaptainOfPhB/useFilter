@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         entry: resolve(__dirname, 'components/index.ts')
       },
       rollupOptions: {
-        external: ['react', 'react-dom', 'antd']
+        external: ['react', 'react-dom', 'antd', '@ant-design/icons']
       }
     },
     server: {
