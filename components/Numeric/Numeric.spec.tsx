@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
 import Numeric from './index';
-import useFilter from '../useFilter';
+import F from '../Filter';
 
 test('should render to screen', () => {
-  const { result } = renderHook(() => useFilter());
+  const { result } = renderHook(() => F.useFilter());
   const { Filter } = result.current;
 
   const label = 'numeric label';

@@ -3,10 +3,10 @@ import { renderHook } from '@testing-library/react-hooks';
 import { render, screen } from '@testing-library/react';
 
 import Text from './index';
-import useFilter from '../useFilter';
+import F from '../Filter';
 
 test('should render to screen', () => {
-  const { result } = renderHook(() => useFilter());
+  const { result } = renderHook(() => F.useFilter());
   const { Filter } = result.current;
 
   const label = 'text label';
