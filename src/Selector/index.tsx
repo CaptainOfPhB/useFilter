@@ -2,6 +2,7 @@ import React from 'react';
 import { Prune } from '../index';
 import { Select, SelectProps } from 'antd';
 import Field, { FieldProps } from '../Field';
+import { OptionProps } from 'antd/lib/select';
 
 type SelectorKeys =
   | 'loading'
@@ -19,14 +20,17 @@ type SelectorKeys =
   | 'filterOption'
   | 'labelInValue';
 
-export type SelectorProps<V, O> = Prune<SelectProps<V, O>, SelectorKeys, 'rest'>;
+export interface SelectorProps<V, O> extends Prune<SelectProps<V, O>, SelectorKeys, 'rest'> {
+  optionProps?: (row: O) => OptionProps;
+}
 
 function Selector<Value, OptionType>(props: SelectorProps<Value, OptionType> & FieldProps) {
+  const options = props.optionProps ? undefined : props.options;
   return (
     <Field {...props}>
       <Select<Value, OptionType>
         {...props.rest}
-        options={props.options}
+        options={options}
         loading={props.loading}
         onSearch={props.onSearch}
         onChange={props.onChange}
@@ -40,7 +44,14 @@ function Selector<Value, OptionType>(props: SelectorProps<Value, OptionType> & F
         optionLabelProp={props.optionLabelProp}
         notFoundContent={props.notFoundContent}
         optionFilterProp={props.optionFilterProp}
-      />
+      >
+        {props.optionProps
+          ? props.options?.map(option => {
+              const optionProps = props.optionProps!(option);
+              return <Select.Option key={optionProps.value} {...optionProps} />;
+            })
+          : null}
+      </Select>
     </Field>
   );
 }
