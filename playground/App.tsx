@@ -29,14 +29,20 @@ function App() {
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
-          <Selector
+          <Selector<number, { label1: string; value1: number }>
             name='user'
             label='Selector demo'
             placeholder='please select an user'
             options={[
-              { label: 123, value: 123 },
-              { label: 'aaa', value: 'aaa' }
+              { label1: '123', value1: 123 },
+              { label1: 'aaa', value1: 456 }
             ]}
+            optionProps={row => ({
+              value: row.value1,
+              label: row.label1,
+              disabled: row.value1 === 123,
+              children: row.label1 + row.value1
+            })}
           />
           <Form.Item dependencies={['user']}>
             {() => (
