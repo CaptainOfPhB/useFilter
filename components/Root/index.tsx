@@ -1,8 +1,8 @@
 import { Button, Col, Form, Row, Space } from 'antd';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import { FormInstance, FormProps } from 'antd/lib/form/Form';
-import { PropsWithChildren, ReactNode, useMemo } from 'react';
-import React, { useState, useCallback, Children } from 'react';
+import React, { useState, useMemo, useCallback, Children } from 'react';
 
 export enum Column {
   default = 6,
