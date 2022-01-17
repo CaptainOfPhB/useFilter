@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       polyfillModulePreload: false,
       lib: {
         formats: ['es'],
-        entry: resolve(__dirname, 'src/index.ts')
+        entry: resolve(__dirname, 'components/index.ts')
       },
       rollupOptions: {
         external: ['react', 'react-dom', 'antd']
@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => {
         cache: false,
         throwOnError: true,
         throwOnWarning: true,
-        include: ['src/**/*.ts', 'src/**/*.tsx', 'playground/**/*.ts', 'playground/**/*.tsx']
+        include: ['components/**/*.ts', 'components/**/*.tsx', 'playground/**/*.ts', 'playground/**/*.tsx']
       })
     ]
   };

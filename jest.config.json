@@ -1,7 +1,7 @@
 {
   "verbose": true,
   "roots": [
-    "src"
+    "components"
   ],
   "preset": "ts-jest",
   "collectCoverage": true,
@@ -31,7 +31,7 @@
     "\\.(css|less)$": "identity-obj-proxy"
   },
   "coveragePathIgnorePatterns": [
-    "<rootDir>/src/index.ts",
-    "<rootDir>/src/interface.ts"
+    "<rootDir>/components/index.ts",
+    "<rootDir>/components/interface.ts"
   ]
 }

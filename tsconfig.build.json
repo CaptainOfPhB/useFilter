@@ -5,7 +5,7 @@
     "declarationDir": "lib"
   },
   "include": [
-    "src"
+    "components"
   ],
   "exclude": [
     "**/*.test.ts",

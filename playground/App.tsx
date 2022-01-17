@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Input, Form } from 'antd';
-import useFilter, { Text, Numeric, Selector } from '../src';
+import useFilter, { Text, Numeric, Selector } from '../components';
 
 interface Values {
   foo: string;
