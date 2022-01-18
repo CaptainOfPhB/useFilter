@@ -1,8 +1,8 @@
-# useFilter
+# Filter
 
 ![staging-test-statement][staging-test-statement] ![coverage-statement][coverage-statement]
 
-A [React][react] hooks that can gather form values easily, based on [antd 4.0][antd].
+A [React][react] component that can gather form values easily, based on [antd 4.0][antd].
 
 [staging-test-statement]: https://github.com/feasier/useFilter/actions/workflows/main.yml/badge.svg?branch=staging 'badge link'
 
@@ -16,21 +16,19 @@ A [React][react] hooks that can gather form values easily, based on [antd 4.0][a
 
 ```typescript jsx
 import React from 'react';
-import useFilter, { Text } from 'feasier/useFilter';
+import Filter, { Text } from 'feasier/filter';
 
 interface Values {
   name: string;
 }
 
 function Demo() {
-  const { Filter } = useFilter<Values>();
-
-  const onSearch = (values: Values) => {
+  const onFinish = (values: Values) => {
     console.log(values);
   }
 
   return (
-    <Filter<Values> onSearch={onSearch}>
+    <Filter<Values> onFinish={onSearch}>
       <Text
         name='name'
         label='your name'
