@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, Input, Form } from 'antd';
-import F, { Text, Numeric, Selector } from '../components';
+import Filter, { Text, Numeric, Selector } from '../components';
 
 interface Values {
   foo: string;
   bar: string;
 }
 
-function App() {
-  const { Filter, getValue } = F.useFilter<Values>();
+function FunctionComp() {
+  const [form] = Form.useForm<Values>();
 
   const onSearch = (values: Values) =>
     new Promise<boolean>(resolve =>
@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <Card title={Text.name}>
-        <Filter size='large' onSubmit={onSearch}>
+        <Filter form={form} filterSize='large' onFinish={onSearch}>
           <Text name='foo' label='Text demo' placeholder='please input a string' />
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
@@ -45,9 +45,9 @@ function App() {
             })}
           />
           <Form.Item dependencies={['user']}>
-            {() => (
+            {({ getFieldValue }) => (
               <Form.Item name='input' label='custom input'>
-                <Input placeholder='please input' disabled={!getValue('user')} />
+                <Input placeholder='please input' disabled={!getFieldValue('user')} />
               </Form.Item>
             )}
           </Form.Item>
@@ -57,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default FunctionComp;
