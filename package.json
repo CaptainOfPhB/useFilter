@@ -1,5 +1,5 @@
 {
-  "name": "useFilter",
+  "name": "filter",
   "version": "1.0.0",
   "description": "A web form component that can gather parameters easily",
   "main": "lib/useFilter.es.js",
