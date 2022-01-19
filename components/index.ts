@@ -1,5 +1,7 @@
 export { default as Text } from './Text';
+export { default as Dato } from './Dato';
 export { default as Field } from './Field';
+export { default as Mutex } from './Mutex';
 export { default as Numeric } from './Numeric';
 export { default as Selector } from './Selector';
 
