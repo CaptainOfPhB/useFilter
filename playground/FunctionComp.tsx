@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Input, Form } from 'antd';
-import Filter, { Text, Numeric, Selector } from '../components';
+import Filter, { Text, Dato, Numeric, Selector, Mutex } from '../components';
 
 interface Values {
   foo: string;
@@ -24,11 +24,13 @@ function FunctionComp() {
         <Filter form={form} filterSize='large' onFinish={onSearch}>
           <Text name='foo' label='Text demo' placeholder='please input a string' />
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
-          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
-          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
-          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
-          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
-          <Numeric name='bar' label='Number demo' placeholder='please input a number' />
+          <Dato name='date' label='date label' />
+          <Mutex<boolean>
+            name='mutex'
+            label='mutex selector'
+            positive={{ label: '是', value: true }}
+            negative={{ label: '否', value: false }}
+          />
           <Selector<number, { label1: string; value1: number }>
             name='user'
             label='Selector demo'
