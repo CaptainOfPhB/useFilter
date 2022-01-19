@@ -18,11 +18,11 @@ function Numeric(props: NumericProps & FieldProps) {
         min={props.min}
         max={props.max}
         controls={controls}
-        style={{ width: '100%' }}
         onChange={props.onChange}
         disabled={props.disabled}
         precision={props.precision}
         placeholder={props.placeholder}
+        style={{ width: '100%', ...props.rest?.style }}
       />
     </Field>
   );
