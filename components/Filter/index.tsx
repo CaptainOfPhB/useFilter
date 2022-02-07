@@ -1,8 +1,8 @@
+import type { ReactNode } from 'react';
 import { Button, Col, Form, Row, Space } from 'antd';
-import type { ReactElement, ReactNode, Ref } from 'react';
 import { FormInstance, FormProps } from 'antd/lib/form/Form';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
-import React, { forwardRef, useState, useMemo, useCallback, Children } from 'react';
+import React, { useState, useMemo, useCallback, Children } from 'react';
 
 export enum Column {
   default = 6,
@@ -20,33 +20,34 @@ export enum Gutter {
 }
 
 export interface FilterProps<V = unknown> extends FormProps<V> {
+  form: FormInstance<V>;
   defaultExpanded?: boolean;
   resetText?: React.ReactNode;
   submitText?: React.ReactNode;
   filterSize?: 'default' | 'large';
-  onFinish?: (values: V) => Promise<unknown> | void;
+  onSubmit?: (values: V) => Promise<unknown> | void;
 }
 
-function InternalFilter<V>(props: FilterProps<V>, ref: Ref<FormInstance<V>>) {
-  const { defaultExpanded, resetText, submitText, filterSize, onFinish, ...rest } = props;
+function Filter<V>(props: FilterProps<V>) {
+  const { defaultExpanded, resetText, submitText, filterSize, form, onSubmit, ...rest } = props;
   const span = filterSize ? Span[filterSize] : Span.default;
   const gutter = filterSize ? Gutter[filterSize] : Gutter.default;
   const columns = filterSize ? Column[filterSize] : Column.default;
   const [loading, setLoading] = useState<boolean | { delay?: number }>(false);
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded || false);
 
-  const fn = useCallback(
+  const onFinish = useCallback(
     async (values: V) => {
-      if (onFinish) {
+      if (onSubmit) {
         setLoading({ delay: 100 });
         try {
-          await onFinish(values);
+          await onSubmit(values);
         } finally {
           setLoading(false);
         }
       }
     },
-    [onFinish]
+    [onSubmit]
   );
 
   const [memoizedOffset, memoizedChildren] = useMemo(() => {
@@ -58,7 +59,7 @@ function InternalFilter<V>(props: FilterProps<V>, ref: Ref<FormInstance<V>>) {
   }, [columns, expanded, props.children, span]);
 
   return (
-    <Form ref={ref} layout='vertical' onFinish={fn} {...rest}>
+    <Form form={form} layout='vertical' onFinish={onFinish} {...rest}>
       <Row gutter={gutter}>
         {memoizedChildren}
         <Col offset={memoizedOffset} span={span} style={{ textAlign: 'right' }}>
@@ -79,9 +80,5 @@ function InternalFilter<V>(props: FilterProps<V>, ref: Ref<FormInstance<V>>) {
     </Form>
   );
 }
-
-const Filter = forwardRef(InternalFilter) as <V>(
-  props: FilterProps<V> & { ref?: Ref<FormInstance<V>> }
-) => ReactElement;
 
 export default Filter;

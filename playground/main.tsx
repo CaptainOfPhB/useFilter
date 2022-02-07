@@ -2,13 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 
-import ClassComp from './ClassComp';
-import FunctionComp from './FunctionComp';
+import App from './App';
 
-ReactDOM.render(
-  <>
-    <ClassComp />
-    <FunctionComp />
-  </>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));

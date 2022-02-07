@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, Input, Form } from 'antd';
-import Filter, { Text, Dato, Numeric, Selector, Mutex } from '../components';
+import useFilter, { Text, Dato, Numeric, Selector, Mutex } from '../components';
 
 interface Values {
   foo: string;
   bar: string;
 }
 
-function FunctionComp() {
-  const [form] = Form.useForm<Values>();
+function App() {
+  const { Filter } = useFilter<Values>();
 
   const onSearch = (values: Values) =>
     new Promise<boolean>(resolve =>
@@ -21,7 +21,7 @@ function FunctionComp() {
   return (
     <div>
       <Card title={Text.name}>
-        <Filter form={form} filterSize='large' onFinish={onSearch}>
+        <Filter filterSize='large' onSubmit={onSearch}>
           <Text name='foo' label='Text demo' placeholder='please input a string' />
           <Numeric name='bar' label='Number demo' placeholder='please input a number' />
           <Dato name='date' label='date label' />
@@ -59,4 +59,4 @@ function FunctionComp() {
   );
 }
 
-export default FunctionComp;
+export default App;
