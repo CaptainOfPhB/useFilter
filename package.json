@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "test": "jest",
+    "test": "jest --maxWorkers=1",
     "test:watch": "jest --watch",
     "test:badges": "pnpm test && jest-coverage-badges output badges",
     "coverage": "serve coverage/lcov-report"
